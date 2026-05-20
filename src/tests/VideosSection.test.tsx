@@ -32,4 +32,10 @@ describe('VideosSection', () => {
     expect(link).toHaveAttribute('target', '_blank')
     expect(link).toHaveAttribute('rel', 'noopener noreferrer')
   })
+
+  it('Death Perception video card renders a thumbnail image', () => {
+    const { container } = render(<VideosSection />)
+    const dpCard = container.querySelector('.video-card')
+    expect(dpCard?.querySelector('img')).toBeInTheDocument()
+  })
 })

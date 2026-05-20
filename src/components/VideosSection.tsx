@@ -1,3 +1,4 @@
+import deathPerceptionThumb from '../assets/images/Death_Perception.png'
 import './VideosSection.css'
 
 const DEATH_PERCEPTION_URL = 'https://youtu.be/JHPovC2WNhU?si=ldB8VW6AeMNlFao7'
@@ -7,6 +8,7 @@ interface Video {
   title: string
   type: string
   url?: string
+  thumbnail?: string
 }
 
 const PLACEHOLDER_VIDEOS: Video[] = [
@@ -15,6 +17,7 @@ const PLACEHOLDER_VIDEOS: Video[] = [
     title: 'Death Perception — Official Music Video',
     type: 'Music Video',
     url: DEATH_PERCEPTION_URL,
+    thumbnail: deathPerceptionThumb,
   },
   {
     id: 2,
@@ -49,6 +52,9 @@ export default function VideosSection() {
                   className="video-card-link"
                 >
                   <div className="video-thumbnail">
+                    {video.thumbnail && (
+                      <img src={video.thumbnail} alt="" className="video-thumbnail-img" />
+                    )}
                     <div className="video-play-btn">
                       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <polygon points="5 3 19 12 5 21 5 3" />

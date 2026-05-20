@@ -85,4 +85,11 @@ describe('MusicSection', () => {
     expect(knCard?.querySelector('img')).toBeInTheDocument()
     expect(knCard?.querySelector('.album-artwork-placeholder')).not.toBeInTheDocument()
   })
+
+  it('Death Perception card renders artwork image instead of placeholder', () => {
+    const { container } = render(<MusicSection />)
+    const dpCard = container.querySelector('.album-card--released')
+    expect(dpCard?.querySelector('img')).toBeInTheDocument()
+    expect(dpCard?.querySelector('.album-artwork-placeholder')).not.toBeInTheDocument()
+  })
 })

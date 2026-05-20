@@ -1,6 +1,7 @@
 import SocialLinks from './SocialLinks'
 import { SOCIAL_LINKS } from '../data/socialLinks'
 import knArtwork from '../assets/images/KN.png'
+import dpArtwork from '../assets/images/Death_Perception.png'
 import './MusicSection.css'
 
 interface Album {
@@ -18,6 +19,7 @@ const ALBUMS: Album[] = [
     year: '2025',
     description:
       'A cinematic journey through grief, resilience, and the space between darkness and light.',
+    artworkSrc: dpArtwork,
   },
   {
     title: 'King Nightmare',
