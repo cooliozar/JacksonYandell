@@ -27,4 +27,16 @@ describe('AboutSection', () => {
     render(<AboutSection />)
     expect(screen.getByText(/real emotion\. human connection\. no apologies\./i)).toBeInTheDocument()
   })
+
+  it('does not use "his" in the artist bio', () => {
+    render(<AboutSection />)
+    const section = screen.getByRole('region', { name: /about/i })
+    expect(section.textContent).not.toMatch(/\bhis\b/i)
+  })
+
+  it('uses "their" language for the artist', () => {
+    render(<AboutSection />)
+    const section = screen.getByRole('region', { name: /about/i })
+    expect(section.textContent).toMatch(/their/i)
+  })
 })
