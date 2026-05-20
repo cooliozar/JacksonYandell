@@ -86,4 +86,23 @@ describe('Favicon and Browser Branding', () => {
     const html = readFileSync(resolve(ROOT, 'index.html'), 'utf-8')
     expect(html).toMatch(/site\.webmanifest/)
   })
+
+  it('favicon.png exists in public directory', () => {
+    expect(existsSync(resolve(ROOT, 'public/favicon.png'))).toBe(true)
+  })
+
+  it('index.html references favicon.png', () => {
+    const html = readFileSync(resolve(ROOT, 'index.html'), 'utf-8')
+    expect(html).toContain('favicon.png')
+  })
+
+  it('index.html does not link to favicon.svg', () => {
+    const html = readFileSync(resolve(ROOT, 'index.html'), 'utf-8')
+    expect(html).not.toContain('favicon.svg')
+  })
+
+  it('index.html favicon links use v=3 cache-busting', () => {
+    const html = readFileSync(resolve(ROOT, 'index.html'), 'utf-8')
+    expect(html).toMatch(/favicon[^"]*\?v=3/)
+  })
 })
