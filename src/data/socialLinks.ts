@@ -7,12 +7,12 @@ export interface SocialLink {
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: 'Spotify',
-    url: 'https://open.spotify.com/artist/jacksonyandell',
+    url: 'https://open.spotify.com/artist/1mIPstqsyaiH144ohKX6Fp?si=I7ZFokOQRWSGJESkurxAsQ',
     icon: 'spotify',
   },
   {
     name: 'Apple Music',
-    url: 'https://music.apple.com/us/artist/jackson-yandell',
+    url: 'https://music.apple.com/us/artist/jackson-yandell/1737699772',
     icon: 'apple-music',
   },
   {
@@ -27,7 +27,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     name: 'TikTok',
-    url: 'https://www.tiktok.com/@jacksonyandell',
+    url: 'https://www.tiktok.com/@jackson.yandell',
     icon: 'tiktok',
   },
   {

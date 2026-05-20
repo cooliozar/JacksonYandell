@@ -15,7 +15,7 @@ export default function AboutSection() {
               Jackson Yandell writes songs that don't let go.
             </p>
             <p>
-              Rooted in powerful guitar and stripped-down honesty, his music finds the moments
+              Rooted in powerful guitar and stripped-down honesty, their music finds the moments
               most artists avoid — the raw edges of grief, hope, and what it means to still feel
               something in a world that moves too fast. There are no shortcuts here. Just songs
               built to last.
@@ -26,7 +26,7 @@ export default function AboutSection() {
             </blockquote>
 
             <p>
-              His sound carries the weight of late-night confessions and open highways, shaped
+              Their sound carries the weight of late-night confessions and open highways, shaped
               by a belief that music, at its best, is a mirror. Every lyric is earned. Every
               note serves the truth of the song.
             </p>

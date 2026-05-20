@@ -1,5 +1,6 @@
 import SocialLinks from './SocialLinks'
 import { SOCIAL_LINKS } from '../data/socialLinks'
+import knArtwork from '../assets/images/KN.png'
 import './MusicSection.css'
 
 interface Album {
@@ -7,6 +8,7 @@ interface Album {
   status: 'released' | 'coming-soon'
   year?: string
   description: string
+  artworkSrc?: string
 }
 
 const ALBUMS: Album[] = [
@@ -21,6 +23,7 @@ const ALBUMS: Album[] = [
     title: 'King Nightmare',
     status: 'coming-soon',
     description: 'The next chapter. A new era is on the horizon.',
+    artworkSrc: knArtwork,
   },
 ]
 
@@ -37,9 +40,13 @@ export default function MusicSection() {
           {ALBUMS.map((album) => (
             <article key={album.title} className={`album-card album-card--${album.status}`}>
               <div className="album-artwork" aria-hidden="true">
-                <div className="album-artwork-placeholder">
-                  <span>{album.title.charAt(0)}</span>
-                </div>
+                {album.artworkSrc ? (
+                  <img src={album.artworkSrc} alt="" className="album-artwork-img" />
+                ) : (
+                  <div className="album-artwork-placeholder">
+                    <span>{album.title.charAt(0)}</span>
+                  </div>
+                )}
               </div>
               <div className="album-info">
                 <h3 className="album-title">{album.title}</h3>

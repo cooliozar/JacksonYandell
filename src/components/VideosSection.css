@@ -17,6 +17,23 @@
   cursor: pointer;
 }
 
+.video-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.video-card-link:hover ~ * .video-play-btn,
+.video-card:has(.video-card-link:hover) .video-play-btn {
+  background: rgba(180, 150, 80, 0.15);
+  border-color: rgba(180, 150, 80, 0.4);
+}
+
+.video-card-link:hover ~ * .video-play-btn svg,
+.video-card:has(.video-card-link:hover) .video-play-btn svg {
+  color: var(--color-gold);
+}
+
 .video-card:hover {
   border-color: rgba(192, 192, 192, 0.2);
   transform: translateY(-2px);
