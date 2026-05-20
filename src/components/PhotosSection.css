@@ -1,0 +1,93 @@
+.photos-section {
+  background: var(--color-black);
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 0.75rem;
+}
+
+.photo-card--landscape {
+  grid-column: span 2;
+}
+
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(192, 192, 192, 0.08);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  margin: 0;
+}
+
+.photo-card:hover {
+  border-color: rgba(192, 192, 192, 0.2);
+}
+
+.photo-placeholder {
+  width: 100%;
+  padding-bottom: 66%;
+  position: relative;
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+}
+
+.photo-card--portrait .photo-placeholder {
+  padding-bottom: 130%;
+}
+
+.photo-card--square .photo-placeholder {
+  padding-bottom: 100%;
+}
+
+.photo-placeholder svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  color: rgba(192, 192, 192, 0.15);
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  color: rgba(192, 192, 192, 0.5);
+  letter-spacing: 0.05em;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  transform: translateY(100%);
+  transition: transform 0.2s ease;
+}
+
+.photo-card:hover .photo-caption {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .photos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .photo-card--landscape {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .photos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-card--landscape,
+  .photo-card--portrait {
+    grid-column: span 1;
+  }
+}
