@@ -15,6 +15,29 @@ describe('Favicon and Browser Branding', () => {
     expect(html).toMatch(/<link[^>]+rel="icon"/)
   })
 
+  it('index.html does not reference vite.svg', () => {
+    const html = readFileSync(resolve(ROOT, 'index.html'), 'utf-8')
+    expect(html).not.toContain('vite.svg')
+  })
+
+  it('index.html favicon links include cache-busting version param', () => {
+    const html = readFileSync(resolve(ROOT, 'index.html'), 'utf-8')
+    expect(html).toMatch(/favicon[^"]*\?v=\d/)
+  })
+
+  it('src/assets/vite.svg does not exist', () => {
+    expect(existsSync(resolve(ROOT, 'src/assets/vite.svg'))).toBe(false)
+  })
+
+  it('favicon.ico exists in public directory', () => {
+    expect(existsSync(resolve(ROOT, 'public/favicon.ico'))).toBe(true)
+  })
+
+  it('index.html references favicon.ico', () => {
+    const html = readFileSync(resolve(ROOT, 'index.html'), 'utf-8')
+    expect(html).toContain('favicon.ico')
+  })
+
   it('favicon.svg does not use Vite default purple color', () => {
     const svg = readFileSync(resolve(ROOT, 'public/favicon.svg'), 'utf-8')
     expect(svg).not.toContain('#863bff')
