@@ -6,12 +6,14 @@ import PhotosSection from './components/PhotosSection'
 import VideosSection from './components/VideosSection'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
+import AtmosphericGrain from './components/AtmosphericGrain'
 import './styles/sections.css'
 import './App.css'
 
 function App() {
   return (
     <>
+      <AtmosphericGrain />
       <Header />
       <main>
         <Hero />

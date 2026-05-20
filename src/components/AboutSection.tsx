@@ -3,7 +3,7 @@ import './AboutSection.css'
 export default function AboutSection() {
   return (
     <section className="about-section section" aria-label="About" id="about">
-      <div className="section-inner">
+      <div className="section-inner about-section-inner">
         <header className="section-header">
           <h2 className="section-title">About</h2>
           <div className="section-rule" aria-hidden="true" />
@@ -20,6 +20,11 @@ export default function AboutSection() {
               something in a world that moves too fast. There are no shortcuts here. Just songs
               built to last.
             </p>
+
+            <blockquote className="about-pullquote">
+              "Every lyric is earned. Every note serves the truth of the song."
+            </blockquote>
+
             <p>
               His sound carries the weight of late-night confessions and open highways, shaped
               by a belief that music, at its best, is a mirror. Every lyric is earned. Every

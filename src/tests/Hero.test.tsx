@@ -30,4 +30,15 @@ describe('Hero', () => {
     render(<Hero />)
     expect(screen.getByRole('link', { name: /watch video/i })).toBeInTheDocument()
   })
+
+  it('renders atmospheric background container', () => {
+    const { container } = render(<Hero />)
+    expect(container.querySelector('.hero-atmosphere')).toBeInTheDocument()
+  })
+
+  it('renders fog layers inside atmosphere', () => {
+    const { container } = render(<Hero />)
+    expect(container.querySelector('.hero-fog-1')).toBeInTheDocument()
+    expect(container.querySelector('.hero-fog-2')).toBeInTheDocument()
+  })
 })
