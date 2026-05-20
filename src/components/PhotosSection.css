@@ -2,30 +2,31 @@
   background: var(--color-black);
 }
 
-/* ─── Masonry-inspired grid ─── */
+/* ─── Masonry columns ─── */
 
 .photos-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  columns: 3;
+  column-gap: 1rem;
 }
 
 @media (max-width: 900px) {
   .photos-grid {
-    grid-template-columns: repeat(2, 1fr);
+    columns: 2;
   }
 }
 
 @media (max-width: 560px) {
   .photos-grid {
-    grid-template-columns: 1fr;
+    columns: 1;
   }
 }
 
 /* ─── Photo Card ─── */
 
 .photo-card {
-  margin: 0;
+  margin: 0 0 1rem;
+  display: block;
+  break-inside: avoid;
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(192, 192, 192, 0.06);
