@@ -53,4 +53,11 @@ describe('Header', () => {
     const nav = screen.getByRole('navigation')
     expect(nav).toBeInTheDocument()
   })
+
+  it('renders brand logo image in header', () => {
+    render(<Header />)
+    const logo = screen.getByAltText(/^jackson yandell$/i)
+    expect(logo).toBeInTheDocument()
+    expect(screen.getByRole('banner')).toContainElement(logo)
+  })
 })

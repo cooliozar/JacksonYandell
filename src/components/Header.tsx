@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import logo from '../assets/images/JacksonYandellLogo.png'
 import './Header.css'
 
 const NAV_LINKS = [
@@ -32,6 +33,13 @@ export default function Header() {
     <header className={`site-header${scrolled ? ' site-header--scrolled' : ''}`} role="banner">
       <div className="header-inner">
         <a href="#" className="header-brand" aria-label="Jackson Yandell — Home">
+          <img
+            src={logo}
+            alt="Jackson Yandell"
+            className="brand-logo"
+            width={32}
+            height={32}
+          />
           <span className="brand-name">Jackson Yandell</span>
         </a>
 

@@ -4,20 +4,29 @@ import './Hero.css'
 export default function Hero() {
   return (
     <section className="hero-section" aria-label="Hero" id="hero">
+      {/* Atmospheric background layers */}
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-bg-gradient" />
-        <div className="hero-bg-particles" />
+        <div className="hero-bg-vignette" />
+      </div>
+
+      {/* Animated atmospheric immersion */}
+      <div className="hero-atmosphere" aria-hidden="true">
+        <div className="hero-fog-1" />
+        <div className="hero-fog-2" />
+        <div className="hero-light-bloom" />
       </div>
 
       <div className="hero-content">
         <div className="hero-logo-wrap">
           <div className="hero-logo-glow" aria-hidden="true" />
+          <div className="hero-logo-glow hero-logo-glow--warm" aria-hidden="true" />
           <img
             src={logo}
             alt="Jackson Yandell Logo"
             className="hero-logo"
-            width={480}
-            height={480}
+            width={640}
+            height={640}
           />
         </div>
 

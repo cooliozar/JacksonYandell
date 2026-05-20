@@ -1,3 +1,4 @@
+import logo from '../assets/images/JacksonYandellLogo.png'
 import './Footer.css'
 
 export default function Footer() {
@@ -5,6 +6,11 @@ export default function Footer() {
 
   return (
     <footer className="site-footer" role="contentinfo">
+      {/* Faint watermark logo */}
+      <div className="footer-watermark" aria-hidden="true">
+        <img src={logo} alt="" className="footer-watermark-logo" />
+      </div>
+
       <div className="footer-inner">
         <div className="footer-rule" aria-hidden="true" />
         <div className="footer-content">
@@ -13,6 +19,9 @@ export default function Footer() {
           </p>
           <p className="footer-tagline">
             Timeless songs. Real emotion.
+          </p>
+          <p className="footer-road-line">
+            Built for the long road.
           </p>
         </div>
       </div>
