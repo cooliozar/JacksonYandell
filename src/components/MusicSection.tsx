@@ -15,7 +15,7 @@ const ALBUMS: Album[] = [
   {
     title: 'Death Perception',
     status: 'released',
-    year: '2024',
+    year: '2025',
     description:
       'A cinematic journey through grief, resilience, and the space between darkness and light.',
   },
