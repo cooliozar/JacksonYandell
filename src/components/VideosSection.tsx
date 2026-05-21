@@ -9,6 +9,8 @@ interface Video {
   type: string
   url?: string
   thumbnail?: string
+  thumbnailAlt?: string
+  thumbnailClass?: string
 }
 
 const PLACEHOLDER_VIDEOS: Video[] = [
@@ -18,6 +20,8 @@ const PLACEHOLDER_VIDEOS: Video[] = [
     type: 'Music Video',
     url: DEATH_PERCEPTION_URL,
     thumbnail: deathPerceptionThumb,
+    thumbnailAlt: 'Death Perception music video — Jackson Yandell',
+    thumbnailClass: 'video-thumbnail-img--top',
   },
   {
     id: 2,
@@ -53,7 +57,11 @@ export default function VideosSection() {
                 >
                   <div className="video-thumbnail">
                     {video.thumbnail && (
-                      <img src={video.thumbnail} alt="" className="video-thumbnail-img" />
+                      <img
+                        src={video.thumbnail}
+                        alt={video.thumbnailAlt ?? ''}
+                        className={`video-thumbnail-img${video.thumbnailClass ? ` ${video.thumbnailClass}` : ''}`}
+                      />
                     )}
                     <div className="video-play-btn">
                       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

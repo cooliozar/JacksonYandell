@@ -38,4 +38,27 @@ describe('VideosSection', () => {
     const dpCard = container.querySelector('.video-card')
     expect(dpCard?.querySelector('img')).toBeInTheDocument()
   })
+
+  it('Death Perception thumbnail has descriptive alt text', () => {
+    const { container } = render(<VideosSection />)
+    const dpCard = container.querySelector('.video-card')
+    const img = dpCard?.querySelector('img')
+    expect(img).toBeInTheDocument()
+    const alt = img?.getAttribute('alt') ?? ''
+    expect(alt.length).toBeGreaterThan(0)
+    expect(alt).toMatch(/death perception/i)
+  })
+
+  it('Death Perception thumbnail is top-framed to keep the title visible', () => {
+    const { container } = render(<VideosSection />)
+    const dpCard = container.querySelector('.video-card')
+    const img = dpCard?.querySelector('img')
+    expect(img).toHaveClass('video-thumbnail-img--top')
+  })
+
+  it('Death Perception card has a play button overlay', () => {
+    const { container } = render(<VideosSection />)
+    const dpCard = container.querySelector('.video-card')
+    expect(dpCard?.querySelector('.video-play-btn')).toBeInTheDocument()
+  })
 })
