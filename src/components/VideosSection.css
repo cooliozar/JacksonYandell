@@ -54,6 +54,11 @@
   display: block;
 }
 
+/* Anchor crop at the top so portrait poster art keeps the title visible */
+.video-thumbnail-img--top {
+  object-position: top center;
+}
+
 .video-play-btn {
   position: absolute;
   top: 50%;
