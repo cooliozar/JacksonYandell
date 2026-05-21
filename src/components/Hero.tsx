@@ -1,4 +1,5 @@
 import logo from '../assets/images/JacksonYandellLogo.png'
+import TimeLogoRing from './TimeLogoRing'
 import './Hero.css'
 
 export default function Hero() {
@@ -28,6 +29,7 @@ export default function Hero() {
             width={640}
             height={640}
           />
+          <TimeLogoRing />
         </div>
 
         <p className="hero-tagline">

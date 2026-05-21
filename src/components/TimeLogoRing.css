@@ -1,0 +1,159 @@
+/* ─── Time Logo Ring ─────────────────────────────────────────────────────── */
+/*
+  Architecture:
+  - SVG overlays the hero logo at the same dimensions (min(640px, 88vw) square)
+  - Base ring at r=290 with 60 tick marks materialises on load
+  - Two sweep arcs (trail + head) animate counter-clockwise over 4 s
+  - 12 Roman numerals: dim base always visible, gold glow layer flashes with
+    animation-delay timed to the sweep arc's passing position
+*/
+
+/* ─── Container ─── */
+
+.time-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(640px, 88vw);
+  height: min(640px, 88vw);
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+}
+
+/* ─── Base Ring & Ticks — fade in on load ─── */
+
+.ring-base-group {
+  animation: ring-fade-in 0.9s ease-out 0.15s both;
+}
+
+@keyframes ring-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.ring-base {
+  fill: none;
+  stroke: rgba(180, 145, 58, 0.13);
+  stroke-width: 0.75;
+}
+
+.ring-tick {
+  stroke-linecap: round;
+}
+
+.ring-tick--major {
+  stroke: rgba(180, 145, 58, 0.38);
+  stroke-width: 0.9;
+}
+
+.ring-tick--minor {
+  stroke: rgba(160, 128, 50, 0.16);
+  stroke-width: 0.5;
+}
+
+/* ─── Sweep Arc ─── */
+/*
+  Both trail and head share the same @keyframes. Positive dashoffset shifts the
+  painted dash pattern backward relative to the clockwise SVG circle path,
+  making the arc appear to travel counter-clockwise.
+  The parent <g> is rotate(-90°) so the starting position is 12 o'clock.
+*/
+
+.ring-sweep-trail,
+.ring-sweep-head {
+  fill: none;
+  stroke-linecap: round;
+  animation: ring-sweep-ccw 4s linear 0.3s 1 both;
+}
+
+/* Trailing wake — 75° wide, dim gold */
+.ring-sweep-trail {
+  stroke: rgba(180, 145, 52, 0.28);
+  stroke-width: 1.3;
+  /* stroke-dasharray: arc_length gap  (75° of circumference 1822) */
+  stroke-dasharray: 380 1443;
+}
+
+/* Leading bright edge — 18° wide, vivid gold with glow */
+.ring-sweep-head {
+  stroke: #c8a234;
+  stroke-width: 1.9;
+  /* stroke-dasharray: arc_length gap  (18° of circumference 1822) */
+  stroke-dasharray: 91 1731;
+  filter: url(#ring-arc-glow);
+}
+
+@keyframes ring-sweep-ccw {
+  /*
+    stroke-dashoffset progresses 0 → 1822 (one full circumference = one
+    counter-clockwise revolution). Opacity fades in at the start and out
+    at the end to avoid a hard cut.
+  */
+  0%   { stroke-dashoffset: 0;    opacity: 0; }
+  8%   {                          opacity: 1; }
+  88%  {                          opacity: 1; }
+  100% { stroke-dashoffset: 1822; opacity: 0; }
+}
+
+/* ─── Roman Numerals ─── */
+
+.numeral-base,
+.numeral-glow {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: central;
+  letter-spacing: 0.03em;
+}
+
+/* Dim base layer — faintly visible throughout (clock "ghost" state) */
+.numeral-base {
+  fill: rgba(110, 82, 32, 0.20);
+}
+
+/*
+  Gold glow overlay — starts invisible, fires when the sweep arc passes,
+  then fades to a faint settled warmth.
+  animation-delay is set inline per numeral (timed to sweep position).
+  animation-fill-mode: both → applies 0% keyframe during delay (opacity 0)
+  and retains 100% keyframe after completion (opacity ~0.08).
+*/
+.numeral-glow {
+  fill: #d4a843;
+  filter: url(#numeral-glow-filter);
+  animation: numeral-flash 2.8s ease-out both;
+}
+
+@keyframes numeral-flash {
+  0%   { opacity: 0;    }
+  5%   { opacity: 1;    }
+  22%  { opacity: 0.55; }
+  100% { opacity: 0.07; }
+}
+
+/* ─── Reduced Motion ─── */
+
+@media (prefers-reduced-motion: reduce) {
+  /* No sweep animation — static clock ring with softly visible numerals */
+  .ring-base-group {
+    animation: none;
+    opacity: 1;
+  }
+
+  .ring-sweep-trail,
+  .ring-sweep-head {
+    display: none;
+  }
+
+  .numeral-glow {
+    animation: none;
+    opacity: 0.14;
+  }
+
+  .numeral-base {
+    fill: rgba(140, 108, 48, 0.30);
+  }
+}

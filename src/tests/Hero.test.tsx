@@ -41,4 +41,27 @@ describe('Hero', () => {
     expect(container.querySelector('.hero-fog-1')).toBeInTheDocument()
     expect(container.querySelector('.hero-fog-2')).toBeInTheDocument()
   })
+
+  it('renders the animated time logo ring', () => {
+    const { container } = render(<Hero />)
+    expect(container.querySelector('[data-testid="time-ring"]')).toBeInTheDocument()
+  })
+
+  it('renders Roman numeral XII in the hero', () => {
+    render(<Hero />)
+    const xiiElements = screen.getAllByText('XII')
+    expect(xiiElements.length).toBeGreaterThanOrEqual(1)
+  })
+
+  it('hero main logo is still rendered with the ring present', () => {
+    render(<Hero />)
+    const logo = screen.getByAltText(/jackson yandell logo/i)
+    expect(logo).toBeInTheDocument()
+  })
+
+  it('CTA buttons still render alongside the time ring', () => {
+    render(<Hero />)
+    expect(screen.getByRole('link', { name: /listen now/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /watch video/i })).toBeInTheDocument()
+  })
 })
